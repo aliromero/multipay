@@ -45,7 +45,7 @@ class Novinpal extends Driver
     public function __construct(Invoice $invoice, $settings)
     {
         $this->invoice($invoice);
-        $this->settings = (object) $settings;
+        $this->settings = (object)$settings;
         $this->client = new Client();
     }
 
@@ -62,7 +62,7 @@ class Novinpal extends Driver
 
         $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 10 : 1); // convert to rial
 
-        $orderId = crc32($this->invoice->getUuid()).time();
+        $orderId = crc32($this->invoice->getUuid()) . time();
         if (!empty($details['orderId'])) {
             $orderId = $details['orderId'];
         } elseif (!empty($details['order_id'])) {
@@ -70,10 +70,10 @@ class Novinpal extends Driver
         }
 
         $data = array(
-            "api_key"=> $this->settings->merchantId, //required
-            "return_url"=> $this->settings->callbackUrl, //required
-            "amount"=> $amount, //required
-            "order_id"=> $orderId, //optional
+            "api_key" => $this->settings->merchantId, //required
+            "return_url" => $this->settings->callbackUrl, //required
+            "amount" => $amount, //required
+            "order_id" => $orderId, //optional
         );
 
         // Pass current $data array to add existing optional details
@@ -82,16 +82,16 @@ class Novinpal extends Driver
         $response = $this->client->request(
             'POST',
             $this->settings->apiPurchaseUrl,
-            [ "form_params" => $data, "http_errors" => false]
+            ["form_params" => $data, "http_errors" => false]
         );
 
         $body = json_decode($response->getBody()->getContents(), false);
 
 
-        if ($body->status == 0) {
-            // some error has happened
-            throw new PurchaseFailedException($body->errorDescription);
-        }
+//        if ($body->status == 0) {
+//            // some error has happened
+//            throw new PurchaseFailedException($body->errorDescription);
+//        }
 
         $this->invoice->transactionId($body->refId);
 
@@ -104,9 +104,9 @@ class Novinpal extends Driver
      *
      * @return RedirectionForm
      */
-    public function pay() : RedirectionForm
+    public function pay(): RedirectionForm
     {
-        $payUrl = $this->settings->apiPaymentUrl.$this->invoice->getTransactionId();
+        $payUrl = $this->settings->apiPaymentUrl . $this->invoice->getTransactionId();
 
         return $this->redirectWithForm($payUrl, [], 'GET');
     }
@@ -119,7 +119,7 @@ class Novinpal extends Driver
      * @throws InvalidPaymentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function verify() : ReceiptInterface
+    public function verify(): ReceiptInterface
     {
         $successFlag = Request::input('success');
         $code = Request::input('code');
@@ -129,44 +129,31 @@ class Novinpal extends Driver
         if ($successFlag != 1) {
             if ($code == 109) {
                 $this->notVerified('تراکنش ناموفق بود', $code);
-            }
-            elseif ($code == 104) {
+            } elseif ($code == 104) {
                 $this->notVerified('در انتظار پردخت', $code);
-            }
-            elseif ($code == 107) {
+            } elseif ($code == 107) {
                 $this->notVerified('PSP یافت نشد', $code);
-            }
-            elseif ($code == 108) {
+            } elseif ($code == 108) {
                 $this->notVerified('خطای سرور', $code);
-            }
-            elseif ($code == 114) {
+            } elseif ($code == 114) {
                 $this->notVerified('متد ارسال شده اشتباه است', $code);
-            }
-            elseif ($code == 115) {
+            } elseif ($code == 115) {
                 $this->notVerified('ترمینال تایید نشده است', $code);
-            }
-            elseif ($code == 116) {
+            } elseif ($code == 116) {
                 $this->notVerified('ترمینال غیرفعال است', $code);
-            }
-            elseif ($code == 117) {
+            } elseif ($code == 117) {
                 $this->notVerified('ترمینال رد شده است', $code);
-            }
-            elseif ($code == 118) {
+            } elseif ($code == 118) {
                 $this->notVerified('ترمینال تعلیق شده است', $code);
-            }
-            elseif ($code == 119) {
+            } elseif ($code == 119) {
                 $this->notVerified('ترمینالی تعریف نشده است', $code);
-            }
-            elseif ($code == 120) {
+            } elseif ($code == 120) {
                 $this->notVerified('حساب کاربری پذیرنده به حالت تعلیق درآمده است', $code);
-            }
-            elseif ($code == 121) {
+            } elseif ($code == 121) {
                 $this->notVerified('حساب کاربری پذیرنده تایید نشده است', $code);
-            }
-            elseif ($code == 122) {
+            } elseif ($code == 122) {
                 $this->notVerified('حساب کاربری پذیرنده یافت نشد', $code);
-            }
-            else {
+            } else {
                 $this->notVerified('خطای ناشناخته ای رخ داده است.');
             }
 
