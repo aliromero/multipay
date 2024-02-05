@@ -461,6 +461,7 @@ return [
         'yekpay' => \Shetabit\Multipay\Drivers\Yekpay\Yekpay::class,
         'zarinpal' => \Shetabit\Multipay\Drivers\Zarinpal\Zarinpal::class,
         'zibal' => \Shetabit\Multipay\Drivers\Zibal\Zibal::class,
+        'novinpal' => \Shetabit\Multipay\Drivers\Zibal\Novinpal::class,
         'sepordeh' => \Shetabit\Multipay\Drivers\Sepordeh\Sepordeh::class,
         'rayanpay' => \Shetabit\Multipay\Drivers\Rayanpay\Rayanpay::class,
         'sizpay' => \Shetabit\Multipay\Drivers\Sizpay\Sizpay::class,
