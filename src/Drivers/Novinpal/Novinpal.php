@@ -1,6 +1,6 @@
 <?php
 
-namespace Romero\Multipay\Drivers\Zibal;
+namespace Romero\Multipay\Drivers\Novinpal;
 
 use GuzzleHttp\Client;
 use Romero\Multipay\Abstracts\Driver;
@@ -15,7 +15,7 @@ use Romero\Multipay\Request;
 class Novinpal extends Driver
 {
     /**
-     * Zibal Client.
+     * Novinpal Client.
      *
      * @var object
      */
@@ -36,7 +36,7 @@ class Novinpal extends Driver
     protected $settings;
 
     /**
-     * Zibal constructor.
+     * Novinpal constructor.
      * Construct the class with the relevant settings.
      *
      * @param Invoice $invoice
