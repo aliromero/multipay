@@ -106,6 +106,7 @@ class Novinpal extends Driver
     public function pay(): RedirectionForm
     {
         $payUrl = $this->settings->apiPaymentUrl . $this->invoice->getTransactionId();
+        throw new PurchaseFailedException($payUrl);
 
         return $this->redirectWithForm($payUrl, [], 'GET');
     }
