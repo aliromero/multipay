@@ -87,9 +87,9 @@ class Novinpal extends Driver
 
         $body = json_decode($response->getBody()->getContents(), false);
 
-        if ($body->result != 100) {
+        if ($body->errorCode != 100) {
             // some error has happened
-            throw new PurchaseFailedException($body->message);
+            throw new PurchaseFailedException($body->errorDescription);
         }
 
         $this->invoice->transactionId($body->refId);
