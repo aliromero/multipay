@@ -1,5 +1,5 @@
 {
-    "name": "romero/multipay",
+    "name": "aliromero/multipay",
     "type": "library",
     "description": "PHP Payment Gateway Integration Package",
     "keywords": [
