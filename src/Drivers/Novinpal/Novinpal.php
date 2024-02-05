@@ -82,7 +82,7 @@ class Novinpal extends Driver
         $response = $this->client->request(
             'POST',
             $this->settings->apiPurchaseUrl,
-            ["json" => $data, "http_errors" => false]
+            [ "form_params" => $data, "http_errors" => false]
         );
 
         $body = json_decode($response->getBody()->getContents(), false);
