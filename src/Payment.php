@@ -1,13 +1,13 @@
 <?php
 
-namespace Shetabit\Multipay;
+namespace Romero\Multipay;
 
-use Shetabit\Multipay\Contracts\DriverInterface;
-use Shetabit\Multipay\Contracts\ReceiptInterface;
-use Shetabit\Multipay\Exceptions\DriverNotFoundException;
-use Shetabit\Multipay\Exceptions\InvoiceNotFoundException;
-use Shetabit\Multipay\Traits\HasPaymentEvents;
-use Shetabit\Multipay\Traits\InteractsWithRedirectionForm;
+use Romero\Multipay\Contracts\DriverInterface;
+use Romero\Multipay\Contracts\ReceiptInterface;
+use Romero\Multipay\Exceptions\DriverNotFoundException;
+use Romero\Multipay\Exceptions\InvoiceNotFoundException;
+use Romero\Multipay\Traits\HasPaymentEvents;
+use Romero\Multipay\Traits\InteractsWithRedirectionForm;
 
 class Payment
 {

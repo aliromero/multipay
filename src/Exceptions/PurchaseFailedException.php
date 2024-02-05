@@ -1,6 +1,6 @@
 <?php
 
-namespace Shetabit\Multipay\Exceptions;
+namespace Romero\Multipay\Exceptions;
 
 use Exception;
 

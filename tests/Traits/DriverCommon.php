@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Shetabit\Multipay\Tests\Traits;
+namespace Romero\Multipay\Tests\Traits;
 
 use Carbon\Carbon;
-use Shetabit\Multipay\RedirectionForm;
+use Romero\Multipay\RedirectionForm;
 
 trait DriverCommon
 {
@@ -58,7 +58,7 @@ trait DriverCommon
     /**
      * Test Verify method
      *
-     * @throws \Shetabit\Multipay\Exceptions\InvoiceNotFoundException
+     * @throws \Romero\Multipay\Exceptions\InvoiceNotFoundException
      */
     public function testVerify()
     {

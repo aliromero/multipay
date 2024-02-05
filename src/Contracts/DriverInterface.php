@@ -1,8 +1,8 @@
 <?php
 
-namespace Shetabit\Multipay\Contracts;
+namespace Romero\Multipay\Contracts;
 
-use Shetabit\Multipay\RedirectionForm;
+use Romero\Multipay\RedirectionForm;
 
 interface DriverInterface
 {

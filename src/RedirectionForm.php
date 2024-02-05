@@ -1,6 +1,6 @@
 <?php
 
-namespace Shetabit\Multipay;
+namespace Romero\Multipay;
 
 use Exception;
 use JsonSerializable;

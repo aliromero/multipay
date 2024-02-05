@@ -1,5 +1,5 @@
 {
-    "name": "shetabit/multipay",
+    "name": "romero/multipay",
     "type": "library",
     "description": "PHP Payment Gateway Integration Package",
     "keywords": [
@@ -58,6 +58,7 @@
         "php zarinpal package",
         "php zarinpal",
         "zarinpal",
+        "novinpal",
         "shaparak payment gateway",
         "php shaparak package",
         "php shaparak",

@@ -1,13 +1,13 @@
 <?php
-namespace Shetabit\Multipay\Drivers\Jibit;
+namespace Romero\Multipay\Drivers\Jibit;
 
-use Shetabit\Multipay\Abstracts\Driver;
-use Shetabit\Multipay\Exceptions\InvalidPaymentException;
-use Shetabit\Multipay\Contracts\ReceiptInterface;
-use Shetabit\Multipay\Exceptions\PurchaseFailedException;
-use Shetabit\Multipay\Invoice;
-use Shetabit\Multipay\RedirectionForm;
-use Shetabit\Multipay\Receipt;
+use Romero\Multipay\Abstracts\Driver;
+use Romero\Multipay\Exceptions\InvalidPaymentException;
+use Romero\Multipay\Contracts\ReceiptInterface;
+use Romero\Multipay\Exceptions\PurchaseFailedException;
+use Romero\Multipay\Invoice;
+use Romero\Multipay\RedirectionForm;
+use Romero\Multipay\Receipt;
 
 class Jibit extends Driver
 {

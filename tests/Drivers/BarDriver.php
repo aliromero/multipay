@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Shetabit\Multipay\Tests\Drivers;
+namespace Romero\Multipay\Tests\Drivers;
 
-use Shetabit\Multipay\Abstracts\Driver;
-use Shetabit\Multipay\Contracts\ReceiptInterface;
-use Shetabit\Multipay\Invoice;
-use Shetabit\Multipay\Receipt;
-use Shetabit\Multipay\RedirectionForm;
+use Romero\Multipay\Abstracts\Driver;
+use Romero\Multipay\Contracts\ReceiptInterface;
+use Romero\Multipay\Invoice;
+use Romero\Multipay\Receipt;
+use Romero\Multipay\RedirectionForm;
 
 class BarDriver extends Driver
 {

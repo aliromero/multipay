@@ -1,8 +1,8 @@
 <?php
 
-namespace Shetabit\Multipay\Tests\Mocks;
+namespace Romero\Multipay\Tests\Mocks;
 
-use Shetabit\Multipay\Payment;
+use Romero\Multipay\Payment;
 
 class MockPaymentManager extends Payment
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Shetabit\Multipay\Drivers\Bitpay;
+namespace Romero\Multipay\Drivers\Bitpay;
 
-use Shetabit\Multipay\Abstracts\Driver;
-use Shetabit\Multipay\Contracts\ReceiptInterface;
-use Shetabit\Multipay\Exceptions\InvalidPaymentException;
-use Shetabit\Multipay\Exceptions\PurchaseFailedException;
-use Shetabit\Multipay\Invoice;
-use Shetabit\Multipay\Receipt;
-use Shetabit\Multipay\RedirectionForm;
-use Shetabit\Multipay\Request;
+use Romero\Multipay\Abstracts\Driver;
+use Romero\Multipay\Contracts\ReceiptInterface;
+use Romero\Multipay\Exceptions\InvalidPaymentException;
+use Romero\Multipay\Exceptions\PurchaseFailedException;
+use Romero\Multipay\Invoice;
+use Romero\Multipay\Receipt;
+use Romero\Multipay\RedirectionForm;
+use Romero\Multipay\Request;
 
 class Bitpay extends Driver
 {
@@ -46,7 +46,7 @@ class Bitpay extends Driver
     /**
      * @return string
      *
-     * @throws \Shetabit\Multipay\Exceptions\PurchaseFailedException
+     * @throws \Romero\Multipay\Exceptions\PurchaseFailedException
      */
     public function purchase()
     {
@@ -76,7 +76,7 @@ class Bitpay extends Driver
     }
 
     /**
-     * @return \Shetabit\Multipay\RedirectionForm
+     * @return \Romero\Multipay\RedirectionForm
      */
     public function pay(): RedirectionForm
     {
@@ -88,7 +88,7 @@ class Bitpay extends Driver
     /**
      * @return ReceiptInterface
      *
-     * @throws \Shetabit\Multipay\Exceptions\InvalidPaymentException
+     * @throws \Romero\Multipay\Exceptions\InvalidPaymentException
      */
     public function verify(): ReceiptInterface
     {

@@ -1,11 +1,11 @@
 <?php
-namespace Shetabit\Multipay\Drivers\Jibit;
+namespace Romero\Multipay\Drivers\Jibit;
 
 use chillerlan\SimpleCache\CacheException;
 use chillerlan\SimpleCache\CacheOptions;
 use chillerlan\SimpleCache\FileCache;
 use Psr\SimpleCache\InvalidArgumentException;
-use Shetabit\Multipay\Exceptions\PurchaseFailedException;
+use Romero\Multipay\Exceptions\PurchaseFailedException;
 
 class JibitClient
 {

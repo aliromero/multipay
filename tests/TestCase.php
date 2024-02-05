@@ -1,9 +1,9 @@
 <?php
 
-namespace Shetabit\Multipay\Tests;
+namespace Romero\Multipay\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
-use Shetabit\Multipay\Tests\Drivers\BarDriver;
+use Romero\Multipay\Tests\Drivers\BarDriver;
 
 class TestCase extends BaseTestCase
 {

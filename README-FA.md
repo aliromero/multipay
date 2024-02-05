@@ -145,7 +145,7 @@ c. سپس از روی کلاس `Payment` یک نمونه ایجاد کنید و 
 </div>
 
 ```php
-    use Shetabit\Multipay\Payment;
+    use Romero\Multipay\Payment;
 
     // load the config file from your project
     $paymentConfig = require('path/to/payment.php');
@@ -169,7 +169,7 @@ c. سپس از روی کلاس `Payment` یک نمونه ایجاد کنید و 
 
 ```php
 // At the top of the file.
-use Shetabit\Multipay\Invoice;
+use Romero\Multipay\Invoice;
 ...
 
 // Create new invoice.
@@ -214,8 +214,8 @@ $invoice->detail('detailName1','your detail1 goes here')
 
 ```php
 // At the top of the file.
-use Shetabit\Multipay\Invoice;
-use Shetabit\Multipay\Payment;
+use Romero\Multipay\Invoice;
+use Romero\Multipay\Payment;
 ...
 
 // load the config file from your project
@@ -256,8 +256,8 @@ $payment->callbackUrl('http://yoursite.com/verify')->purchase(
 
 ```php
 // At the top of the file.
-use Shetabit\Multipay\Invoice;
-use Shetabit\Multipay\Payment;
+use Romero\Multipay\Invoice;
+use Romero\Multipay\Payment;
 ...
 
 // load the config file from your project
@@ -295,8 +295,8 @@ return $payment->purchase(
 
 ```php
 // At the top of the file.
-use Shetabit\Multipay\Payment;
-use Shetabit\Multipay\Exceptions\InvalidPaymentException;
+use Romero\Multipay\Payment;
+use Romero\Multipay\Exceptions\InvalidPaymentException;
 ...
 
 // load the config file from your project
@@ -348,7 +348,7 @@ try {
 <div dir="rtl">
 
 
-کلاس درایوری که قصد ساختنش رو دارید باید کلاس `Shetabit\Multipay\Abstracts\Driver` رو به ارث ببره.
+کلاس درایوری که قصد ساختنش رو دارید باید کلاس `Romero\Multipay\Abstracts\Driver` رو به ارث ببره.
 
 به عنوان مثال:
 
@@ -357,9 +357,9 @@ try {
 ```php
 namespace App\Packages\PaymentDriver;
 
-use Shetabit\Multipay\Abstracts\Driver;
-use Shetabit\Multipay\Exceptions\InvalidPaymentException;
-use Shetabit\Multipay\{Contracts\ReceiptInterface, Invoice, Receipt};
+use Romero\Multipay\Abstracts\Driver;
+use Romero\Multipay\Exceptions\InvalidPaymentException;
+use Romero\Multipay\{Contracts\ReceiptInterface, Invoice, Receipt};
 
 class MyDriver extends Driver
 {
@@ -447,8 +447,8 @@ class MyDriver extends Driver
 
   ```php
   // At the top of the file.
-  use Shetabit\Multipay\Invoice;
-  use Shetabit\Multipay\Payment;
+  use Romero\Multipay\Invoice;
+  use Romero\Multipay\Payment;
   ...
   
   // load the config file from your project
@@ -477,8 +477,8 @@ class MyDriver extends Driver
 
   ```php
   // At the top of the file.
-  use Shetabit\Multipay\Invoice;
-  use Shetabit\Multipay\Payment;
+  use Romero\Multipay\Invoice;
+  use Romero\Multipay\Payment;
   ...
   
   // load the config file from your project
@@ -504,8 +504,8 @@ class MyDriver extends Driver
 
   ```php
   // At the top of the file.
-  use Shetabit\Multipay\Invoice;
-  use Shetabit\Multipay\Payment;
+  use Romero\Multipay\Invoice;
+  use Romero\Multipay\Payment;
   ...
   
   // load the config file from your project
@@ -534,8 +534,8 @@ class MyDriver extends Driver
 
   ```php
   // At the top of the file.
-  use Shetabit\Multipay\Invoice;
-  use Shetabit\Multipay\Payment;
+  use Romero\Multipay\Invoice;
+  use Romero\Multipay\Payment;
   ...
 
   // load the config file from your project
@@ -577,7 +577,7 @@ class MyDriver extends Driver
 
   ```php
 // At the top of the file.
-use Shetabit\Multipay\Invoice;
+use Romero\Multipay\Invoice;
 ...
 
 

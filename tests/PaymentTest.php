@@ -1,12 +1,12 @@
 <?php
 
-namespace Shetabit\Multipay\Tests;
+namespace Romero\Multipay\Tests;
 
 use Carbon\Carbon;
-use Shetabit\Multipay\Invoice;
-use Shetabit\Multipay\RedirectionForm;
-use Shetabit\Multipay\Tests\Drivers\BarDriver;
-use Shetabit\Multipay\Tests\Mocks\MockPaymentManager;
+use Romero\Multipay\Invoice;
+use Romero\Multipay\RedirectionForm;
+use Romero\Multipay\Tests\Drivers\BarDriver;
+use Romero\Multipay\Tests\Mocks\MockPaymentManager;
 
 class PaymentTest extends TestCase
 {

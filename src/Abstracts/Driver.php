@@ -1,11 +1,11 @@
 <?php
 
-namespace Shetabit\Multipay\Abstracts;
+namespace Romero\Multipay\Abstracts;
 
-use Shetabit\Multipay\Contracts\DriverInterface;
-use Shetabit\Multipay\Contracts\ReceiptInterface;
-use Shetabit\Multipay\Invoice;
-use Shetabit\Multipay\RedirectionForm;
+use Romero\Multipay\Contracts\DriverInterface;
+use Romero\Multipay\Contracts\ReceiptInterface;
+use Romero\Multipay\Invoice;
+use Romero\Multipay\RedirectionForm;
 
 abstract class Driver implements DriverInterface
 {

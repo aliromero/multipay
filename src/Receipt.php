@@ -1,9 +1,9 @@
 <?php
 
-namespace Shetabit\Multipay;
+namespace Romero\Multipay;
 
-use Shetabit\Multipay\Abstracts\Receipt as ReceiptAbstract;
-use Shetabit\Multipay\Traits\HasDetail;
+use Romero\Multipay\Abstracts\Receipt as ReceiptAbstract;
+use Romero\Multipay\Traits\HasDetail;
 
 class Receipt extends ReceiptAbstract
 {

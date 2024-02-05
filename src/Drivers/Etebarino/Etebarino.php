@@ -1,14 +1,14 @@
 <?php
 
-namespace Shetabit\Multipay\Drivers\Etebarino;
+namespace Romero\Multipay\Drivers\Etebarino;
 
 use GuzzleHttp\Client;
-use Shetabit\Multipay\Abstracts\Driver;
-use Shetabit\Multipay\Exceptions\PurchaseFailedException;
-use Shetabit\Multipay\Contracts\ReceiptInterface;
-use Shetabit\Multipay\Invoice;
-use Shetabit\Multipay\Receipt;
-use Shetabit\Multipay\RedirectionForm;
+use Romero\Multipay\Abstracts\Driver;
+use Romero\Multipay\Exceptions\PurchaseFailedException;
+use Romero\Multipay\Contracts\ReceiptInterface;
+use Romero\Multipay\Invoice;
+use Romero\Multipay\Receipt;
+use Romero\Multipay\RedirectionForm;
 
 class Etebarino extends Driver
 {

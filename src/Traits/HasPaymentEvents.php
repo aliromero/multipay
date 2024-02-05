@@ -1,8 +1,8 @@
 <?php
 
-namespace Shetabit\Multipay\Traits;
+namespace Romero\Multipay\Traits;
 
-use Shetabit\Multipay\EventEmitter;
+use Romero\Multipay\EventEmitter;
 
 trait HasPaymentEvents
 {
