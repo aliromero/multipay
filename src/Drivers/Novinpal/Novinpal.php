@@ -70,7 +70,7 @@ class Novinpal extends Driver
         }
 
         $data = array(
-            "api_key"=> $this->settings->apiKey, //required
+            "api_key"=> $this->settings->merchantId, //required
             "return_url"=> $this->settings->callbackUrl, //required
             "amount"=> $amount, //required
             "order_id"=> $orderId, //optional
@@ -175,7 +175,7 @@ class Novinpal extends Driver
 
         //start verfication
         $data = array(
-            "api_key" => $this->settings->apiKey, //required
+            "api_key" => $this->settings->merchantId, //required
             "ref_id" => $transactionId, //required
         );
 
