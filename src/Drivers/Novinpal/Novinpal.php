@@ -85,7 +85,7 @@ class Novinpal extends Driver
             ["form_params" => $data, "http_errors" => false]
         );
 
-        $body = json_decode($response->getBody()->getContents(), false);
+        $body = json_decode($response->getBody()->getContents(), true);
 
         throw new PurchaseFailedException($body['refId']);
         if ($body->status == 0) {
