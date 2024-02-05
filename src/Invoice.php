@@ -3,7 +3,7 @@
 namespace Romero\Multipay;
 
 use Ramsey\Uuid\Uuid;
-use Shetabit\Multipay\Traits\HasDetail;
+use Romero\Multipay\Traits\HasDetail;
 
 class Invoice
 {

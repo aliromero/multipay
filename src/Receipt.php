@@ -3,7 +3,7 @@
 namespace Romero\Multipay;
 
 use Romero\Multipay\Abstracts\Receipt as ReceiptAbstract;
-use Shetabit\Multipay\Traits\HasDetail;
+use Romero\Multipay\Traits\HasDetail;
 
 class Receipt extends ReceiptAbstract
 {
