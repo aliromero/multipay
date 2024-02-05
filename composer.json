@@ -97,12 +97,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Shetabit\\Multipay\\": "src"
+            "Romero\\Multipay\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Shetabit\\Multipay\\Tests\\": "tests"
+            "Romero\\Multipay\\Tests\\": "tests"
         }
     },
     "scripts": {
