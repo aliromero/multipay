@@ -87,13 +87,12 @@ class Novinpal extends Driver
 
         $body = json_decode($response->getBody()->getContents(), true);
 
-        throw new PurchaseFailedException($body['refId']);
-        if ($body->status == 0) {
+        if ($body['status'] == 0) {
             // some error has happened
-            throw new PurchaseFailedException($body->errorDescription);
+            throw new PurchaseFailedException($body['errorDescription']);
         }
 
-        $this->invoice->transactionId($body->refId);
+        $this->invoice->transactionId($body['refId']);
 
         // return the transaction's id
         return $this->invoice->getTransactionId();
@@ -173,10 +172,10 @@ class Novinpal extends Driver
             ["form_params" => $data, "http_errors" => false]
         );
 
-        $body = json_decode($response->getBody()->getContents(), false);
+        $body = json_decode($response->getBody()->getContents(), true);
 
-        if ($body->result != 100) {
-            $this->notVerified($body->errorDescription, $body->result);
+        if ($body['result'] != 100) {
+            $this->notVerified($body['errorDescription'], $body['result']);
         }
 
         /*
@@ -184,7 +183,7 @@ class Novinpal extends Driver
             var_dump($body);
         */
 
-        return $this->createReceipt($body->refNumber);
+        return $this->createReceipt($body['refNumber']);
     }
 
     /**
