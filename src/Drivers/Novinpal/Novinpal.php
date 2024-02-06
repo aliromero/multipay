@@ -184,7 +184,7 @@ class Novinpal extends Driver
             var_dump($body);
         */
 
-        $receipt = $this->createReceipt($body['refNumber']);
+        $receipt = $this->createReceipt($body['refId']);
         $receipt->detail([
             "cardNumber" => $body['cardNumber'],
         ]);
