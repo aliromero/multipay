@@ -175,8 +175,8 @@ class Novinpal extends Driver
 
         $body = json_decode($response->getBody()->getContents(), true);
 
-        if ($body['result'] != 100) {
-            $this->notVerified($body['errorDescription'], $body['result']);
+        if ($body['status'] != 1) {
+            $this->notVerified($body['errorDescription'], $body['errorCode']);
         }
 
         /*
