@@ -34,6 +34,7 @@ class Novinpal extends Driver
      * @var object
      */
     protected $settings;
+    protected $refId;
 
     /**
      * Novinpal constructor.
@@ -93,7 +94,7 @@ class Novinpal extends Driver
         }
 
         $this->invoice->transactionId($body['refId']);
-
+        $this->refId = $body['refId'];
         // return the transaction's id
         return $this->invoice->getTransactionId();
     }
