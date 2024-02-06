@@ -260,6 +260,7 @@ class Novinpal extends Driver
             'mobile',
             'description',
             'card_number',
+            'cardNumber',
         ];
 
         foreach ($optionalParameters as $parameter) {
