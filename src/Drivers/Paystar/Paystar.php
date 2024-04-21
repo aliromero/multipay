@@ -180,7 +180,13 @@ class Paystar extends Driver
         if ($body->status !== 1) {
             throw new InvalidPaymentException($this->translateStatus($body->status), (int)$body->status);
         }
-
+        
+        $receipt = $this->createReceipt($refNum);
+        $receipt->detail([
+            "ref_num" => $body['ref_num'],
+            "amount" => $body['price'],
+            "cardNumber" => $body['card_number'],
+        ]);
         return $this->createReceipt($refNum);
     }
 
