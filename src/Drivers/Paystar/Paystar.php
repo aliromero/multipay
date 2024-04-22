@@ -192,7 +192,7 @@ class Paystar extends Driver
             "amount" => $body['data']['price'],
             "cardNumber" => $body['data']['card_number'],
         ]);
-        return $this->createReceipt($refNum);
+        return $receipt;
     }
 
     /**
