@@ -56,6 +56,11 @@ class Paystar extends Driver
         $this->client = new Client();
     }
 
+    private function extractDetails($name)
+    {
+        return empty($this->invoice->getDetails()[$name]) ? null : $this->invoice->getDetails()[$name];
+    }
+
     /**
      * Purchase Invoice.
      *
@@ -64,25 +69,25 @@ class Paystar extends Driver
      * @throws PurchaseFailedException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
+    
     public function purchase()
     {
-        $details = $this->invoice->getDetails();
-        $order_id = $this->invoice->getUuid();
         $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 10 : 1); // convert to rial
         $callback = $this->settings->callbackUrl;
 
+        $validCard = $this->extractDetails('valid_card_number');
+        $factorNumber = $this->extractDetails('factorNumber');
+
         $data = [
             'amount' => $amount,
-            'order_id' => $details['factorNumber'] ?? $order_id,
-            'card_number' => $details['valid_card_number'] ?? null,
-            'mail' => $details['email'] ?? null,
-            'phone' => $details['mobile'] ?? $details['phone'] ?? null,
-            'description' => $details['description'] ?? $this->settings->description,
+            'order_id' => $factorNumber,
+            'card_number' => $validCard,
+            'description' => $this->settings->description,
             'callback' => $callback,
             'sign' =>
                 hash_hmac(
                     'SHA512',
-                    $amount . '#' . $order_id . '#' . $callback,
+                    $amount . '#' . $factorNumber . '#' . $callback,
                     $this->settings->signKey
                 ),
         ];
