@@ -114,7 +114,7 @@ class Paystar extends Driver
             throw new PurchaseFailedException($this->translateStatus($body->status));
         }
 
-        $this->invoice->transactionId($body->data->ref_num);
+        $this->invoice->transactionId($body->data->token);
         $this->token = $body->data->token;
 
         // return the transaction's id
@@ -128,13 +128,11 @@ class Paystar extends Driver
      */
     public function pay() : RedirectionForm
     {
-        return $this->redirectWithForm(
-            $this->settings->apiPaymentUrl,
-            [
-                'token' => $this->token,
-            ],
-            'POST'
-        );
+        $url = $this->settings->apiPaymentUrl . $this->invoice->getTransactionId();
+
+        return $this->redirectWithForm($url, [], 'GET');
+
+        
     }
 
     /**
