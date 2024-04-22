@@ -56,6 +56,11 @@ class Paystar extends Driver
         $this->client = new Client();
     }
 
+    private function extractDetails($name)
+    {
+        return empty($this->invoice->getDetails()[$name]) ? null : $this->invoice->getDetails()[$name];
+    }
+
     /**
      * Purchase Invoice.
      *
@@ -64,24 +69,26 @@ class Paystar extends Driver
      * @throws PurchaseFailedException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
+    
     public function purchase()
     {
-        $details = $this->invoice->getDetails();
-        $order_id = $this->invoice->getUuid();
-        $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 10 : 1); // convert to rial
+        $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 1 : 10); // convert to rial
         $callback = $this->settings->callbackUrl;
+
+        $validCard = $this->extractDetails('valid_card_number');
+        $factorNumber = $this->extractDetails('factorNumber');
 
         $data = [
             'amount' => $amount,
-            'order_id' => $order_id,
-            'mail' => $details['email'] ?? null,
-            'phone' => $details['mobile'] ?? $details['phone'] ?? null,
-            'description' => $details['description'] ?? $this->settings->description,
+            'order_id' => $factorNumber,
+            'callback_method' => '1',
+            'card_number' => $validCard,
+            'description' => $this->settings->description,
             'callback' => $callback,
             'sign' =>
                 hash_hmac(
                     'SHA512',
-                    $amount . '#' . $order_id . '#' . $callback,
+                    $amount . '#' . $factorNumber . '#' . $callback,
                     $this->settings->signKey
                 ),
         ];
@@ -108,7 +115,7 @@ class Paystar extends Driver
             throw new PurchaseFailedException($this->translateStatus($body->status));
         }
 
-        $this->invoice->transactionId($body->data->ref_num);
+        $this->invoice->transactionId($body->data->token);
         $this->token = $body->data->token;
 
         // return the transaction's id
@@ -122,13 +129,11 @@ class Paystar extends Driver
      */
     public function pay() : RedirectionForm
     {
-        return $this->redirectWithForm(
-            $this->settings->apiPaymentUrl,
-            [
-                'token' => $this->token,
-            ],
-            'POST'
-        );
+        $url = $this->settings->apiPaymentUrl . $this->invoice->getTransactionId();
+
+        return $this->redirectWithForm($url, [], 'GET');
+
+        
     }
 
     /**
@@ -142,9 +147,9 @@ class Paystar extends Driver
     public function verify() : ReceiptInterface
     {
         $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 10 : 1); // convert to rial
-        $refNum = Request::post('ref_num');
-        $cardNumber = Request::post('card_number');
-        $trackingCode = Request::post('tracking_code');
+        $refNum = Request::get('ref_num');
+        $cardNumber = Request::get('card_number');
+        $trackingCode = Request::get('tracking_code');
 
         if (!$trackingCode) {
             throw new InvalidPaymentException($this->translateStatus(-1), -1);
@@ -175,13 +180,19 @@ class Paystar extends Driver
             ]
         );
 
-        $body = json_decode($response->getBody()->getContents());
+        $body = json_decode($response->getBody()->getContents(),true);
 
-        if ($body->status !== 1) {
-            throw new InvalidPaymentException($this->translateStatus($body->status), (int)$body->status);
+        if ($body['status'] !== 1) {
+            throw new InvalidPaymentException($this->translateStatus($body['status']), (int)$body['status']);
         }
-
-        return $this->createReceipt($refNum);
+        
+        $receipt = $this->createReceipt($refNum);
+        $receipt->detail([
+            "ref_num" => $body['data']['ref_num'],
+            "amount" => $body['data']['price'],
+            "cardNumber" => $body['data']['card_number'],
+        ]);
+        return $receipt;
     }
 
     /**
