@@ -73,7 +73,8 @@ class Paystar extends Driver
 
         $data = [
             'amount' => $amount,
-            'order_id' => $order_id,
+            'order_id' => $details['factorNumber'] ?? $order_id,
+            'card_number' => $details['valid_card_number'] ?? null,
             'mail' => $details['email'] ?? null,
             'phone' => $details['mobile'] ?? $details['phone'] ?? null,
             'description' => $details['description'] ?? $this->settings->description,
