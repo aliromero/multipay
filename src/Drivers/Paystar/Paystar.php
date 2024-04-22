@@ -81,6 +81,7 @@ class Paystar extends Driver
         $data = [
             'amount' => $amount,
             'order_id' => $factorNumber,
+            'callback_method' => '1',
             'card_number' => $validCard,
             'description' => $this->settings->description,
             'callback' => $callback,
