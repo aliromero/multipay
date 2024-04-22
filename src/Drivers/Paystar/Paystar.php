@@ -72,7 +72,7 @@ class Paystar extends Driver
     
     public function purchase()
     {
-        $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 10 : 1); // convert to rial
+        $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 1 : 10); // convert to rial
         $callback = $this->settings->callbackUrl;
 
         $validCard = $this->extractDetails('valid_card_number');
@@ -145,7 +145,7 @@ class Paystar extends Driver
      */
     public function verify() : ReceiptInterface
     {
-        $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 10 : 1); // convert to rial
+        $amount = $this->invoice->getAmount() * ($this->settings->currency == 'T' ? 1 : 10); // convert to rial
         $refNum = Request::post('ref_num');
         $cardNumber = Request::post('card_number');
         $trackingCode = Request::post('tracking_code');
